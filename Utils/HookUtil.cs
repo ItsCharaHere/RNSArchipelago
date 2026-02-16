@@ -104,7 +104,12 @@ namespace RnSArchipelago.Utils
 
         internal bool IsEqualToNumeric(RValue* value, long testValue)
         {
-            return value->Real == testValue || value->Int32 == testValue;
+            return ((int)value->Real | value->Int32) == testValue;
+        }
+
+        internal bool IsEqualToNumeric(RValue value, long testValue)
+        {
+            return ((int)value.Real | value.Int32) == testValue;
         }
 
         internal long GetNumeric(RValue* value)

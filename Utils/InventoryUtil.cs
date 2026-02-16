@@ -210,60 +210,401 @@ namespace RnSArchipelago.Utils
 
         private static readonly string[] ITEMSETS = [ "Arcane Set", "Night Set","Timespace Set", "Wind Set", "Bloodwolf Set", "Assassin Set", "Rockdragon Set", "Flame Set",
                                                     "Gem Set", "Lightning Set", "Shrine Set", "Lucky Set", "Life Set", "Poison Set", "Depth Set", "Darkbite Set", "Timegem Set",
-                                                    "Youkai Set", "Haunted Set", "Gladiator Set", "Sparkblade Set", "Swiftflight Set", "Sacredflame Set", "Ruins Set", "Lakeshrine Set"];
+                                                    "Youkai Set", "Haunted Set", "Gladiator Set", "Sparkblade Set", "Swiftflight Set", "Sacredflame Set", "Ruins Set", "Lakeshrine Set",
+                                                    "Glacier Set", "Memory Set", "Cultist Set", "Painters Set", "Daynight Set", "Sharpedge Set", "Oceans Set", "Performers Set",
+                                                    "Miners Set", "Teaparty Set"];
 
         internal List<long> AvailableItems => availableItems;
 
+        #region Individual Items
+        private static int itemId = 399;
+
+        private static readonly long RAVEN_GRIMOIRE = itemId++;
+        private static readonly long BLACKWING_STAFF = itemId++;
+        private static readonly long CURSE_TALON = itemId++;
+        private static readonly long DARKMAGIC_BLADE = itemId++;
+        private static readonly long WITCHS_CLOAK = itemId++;
+        private static readonly long CROWFEATHER_HAIRPIN = itemId++;
+        private static readonly long REDBLACK_RIBBON = itemId++;
+        private static readonly long OPAL_NECKLACE = itemId++;
+
+        private static readonly long SLEEPING_GREATBOW = itemId++;
+        private static readonly long CRESCENTMOON_DAGGER = itemId++;
+        private static readonly long LULLABY_HARP = itemId++;
+        private static readonly long NIGHTSTAR_GRIMOIRE = itemId++;
+        private static readonly long MOON_PENDANT = itemId++;
+        private static readonly long PAJAMA_HAT = itemId++;
+        private static readonly long STUFFED_RABBIT = itemId++;
+        private static readonly long NIGHTINGALE_GOWN = itemId++;
+
+        private static readonly long ETERNITY_FLUTE = itemId++;
+        private static readonly long TIMEWARP_WAND = itemId++;
+        private static readonly long CHROME_SHIELD = itemId++;
+        private static readonly long CLOCKWORK_TOME = itemId++;
+        private static readonly long METRONOME_BOOTS = itemId++;
+        private static readonly long TIMEMAGE_CAP = itemId++;
+        private static readonly long STARRY_CLOAK = itemId++;
+        private static readonly long GEMINI_NECKLACE = itemId++;
+
+        private static readonly long HAWKFEATHER_FAN = itemId++;
+        private static readonly long WINDBITE_DAGGER = itemId++;
+        private static readonly long PIDGEON_BOW = itemId++;
+        private static readonly long SHINSOKU_KATANA = itemId++;
+        private static readonly long EAGLEWING_CHARM = itemId++;
+        private static readonly long SPARROW_FEATHER = itemId++;
+        private static readonly long WINGED_CAP = itemId++;
+        private static readonly long THIEFS_COAT = itemId++;
+
+        private static readonly long VAMPRIC_DAGGER = itemId++;
+        private static readonly long BLOODY_BANDAGE = itemId++;
+        private static readonly long LEECH_STAFF = itemId++;
+        private static readonly long BLOODHOUND_GREATSWORD = itemId++;
+        private static readonly long REAPER_CLOAK = itemId++;
+        private static readonly long BLOODFLOWER_BROOCH = itemId++;
+        private static readonly long WOLF_HOOD = itemId++;
+        private static readonly long BLOOD_VIAL = itemId++;
+
+        private static readonly long BLACK_WAKIZASHI = itemId++;
+        private static readonly long THROWING_DAGGER = itemId++;
+        private static readonly long ASSASSINS_KNIFE = itemId++;
+        private static readonly long NINJUTSU_SCROLL = itemId++;
+        private static readonly long SHADOW_BRACELET = itemId++;
+        private static readonly long NINJA_ROBE = itemId++;
+        private static readonly long KUNOICHI_HOOD = itemId++;
+        private static readonly long SHINOBI_TABI = itemId++;
+
+        private static readonly long DRAGONHEAD_SPEAR = itemId++;
+        private static readonly long GRANITE_GREATSWORD = itemId++;
+        private static readonly long GREYSTEEL_SHIELD = itemId++;
+        private static readonly long STONEBREAKER_STAFF = itemId++;
+        private static readonly long TOUGH_GAUNTLET = itemId++;
+        private static readonly long ROCKDRAGON_MAIL = itemId++;
+        private static readonly long OBSIDIAN_HAIRPIN = itemId++;
+        private static readonly long IRON_GREAVES = itemId++;
+
+        private static readonly long VOLCANO_SPEAR = itemId++;
+        private static readonly long REDDRAGON_BLADE = itemId++;
+        private static readonly long FLAME_BOW = itemId++;
+        private static readonly long METEOR_STAFF = itemId++;
+        private static readonly long PHOENIX_CHARM = itemId++;
+        private static readonly long FIRESCALE_CORSET = itemId++;
+        private static readonly long DEMON_HORNS = itemId++;
+        private static readonly long FLAMEWALKER_BOOTS = itemId++;
+
+        private static readonly long DIAMOND_SHIELD = itemId++;
+        private static readonly long PERIDOT_RAPIER = itemId++;
+        private static readonly long GARNET_STAFF = itemId++;
+        private static readonly long SAPPHIRE_VIOLIN = itemId++;
+        private static readonly long EMERALD_CHESTPLATE = itemId++;
+        private static readonly long AMETHYST_BRACELET = itemId++;
+        private static readonly long TOPAZ_CHARM = itemId++;
+        private static readonly long RUBY_CIRCLET = itemId++;
+
+        private static readonly long BRIGHTSTORM_SPEAR = itemId++;
+        private static readonly long BOLT_STAFF = itemId++;
+        private static readonly long LIGHTNING_BOW = itemId++;
+        private static readonly long DARKSTORM_KNIFE = itemId++;
+        private static readonly long DARKCLOUD_NECKLACE = itemId++;
+        private static readonly long CROWN_OF_STORMS = itemId++;
+        private static readonly long THUNDERCLAP_GLOVES = itemId++;
+        private static readonly long STORM_PETTICOAT = itemId++;
+
+        private static readonly long HOLY_GREATSWORD = itemId++;
+        private static readonly long SACRED_BOW = itemId++;
+        private static readonly long PURIFICATION_ROD = itemId++;
+        private static readonly long ORNAMENTAL_BELL = itemId++;
+        private static readonly long SHRINEMAIDENS_KOSODE = itemId++;
+        private static readonly long REDWHITE_RIBBON = itemId++;
+        private static readonly long DIVINE_MIRROR = itemId++;
+        private static readonly long GOLDEN_CHIME = itemId++;
+
+        private static readonly long BOOK_OF_CHEATS = itemId++;
+        private static readonly long GOLDEN_KATANA = itemId++;
+        private static readonly long GLITTERING_TRUMPET = itemId++;
+        private static readonly long ROYAL_STAFF = itemId++;
+        private static readonly long BALLROOM_GOWN = itemId++;
+        private static readonly long SILVER_COIN = itemId++;
+        private static readonly long QUEENS_CROWN = itemId++;
+        private static readonly long MIMICK_RABBITFOOT = itemId++;
+
+        private static readonly long BUTTERFLY_OCARINA = itemId++;
+        private static readonly long FAIRY_SPEAR = itemId++;
+        private static readonly long MOSS_SHIELD = itemId++;
+        private static readonly long FLORAL_BOW = itemId++;
+        private static readonly long BLUE_ROSE = itemId++;
+        private static readonly long SUNFLOWER_CROWN = itemId++;
+        private static readonly long MIDSUMMER_DRESS = itemId++;
+        private static readonly long GRASSWOVEN_BRACELET = itemId++;
+
+        private static readonly long SNAKEFANG_DAGGER = itemId++;
+        private static readonly long IVY_STAFF = itemId++;
+        private static readonly long DEATHCAP_TOME = itemId++;
+        private static readonly long SPIDERBITE_BOW = itemId++;
+        private static readonly long COMPOUND_GLOVES = itemId++;
+        private static readonly long POISONFROG_CHARM = itemId++;
+        private static readonly long VENOM_HOOD = itemId++;
+        private static readonly long CHEMISTS_COAT = itemId++;
+
+        private static readonly long SEASHEEL_SHIELD = itemId++;
+        private static readonly long NECRONOMICON = itemId++;
+        private static readonly long TIDAL_GREATSWORD = itemId++;
+        private static readonly long OCCULT_DAGGER = itemId++;
+        private static readonly long MERMAID_SCALEMAIL = itemId++;
+        private static readonly long HYDROUS_BLOB = itemId++;
+        private static readonly long ABYSS_ARTIFACT = itemId++;
+        private static readonly long LOST_PENDANT = itemId++;
+
+        private static readonly long SAWTOOTH_CLEAVER = itemId++;
+        private static readonly long RAVENS_DAGGER = itemId++;
+        private static readonly long KILLING_NOTE = itemId++;
+        private static readonly long BLACKSTEEL_BUCKLER = itemId++;
+        private static readonly long NIGHTGUARD_GLOVES = itemId++;
+        private static readonly long SNIPERS_EYEGLASSES = itemId++;
+        private static readonly long DARKMAGE_CHARM = itemId++;
+        private static readonly long FIRSTSTRIKE_BRACELET = itemId++;
+
+        private static readonly long OBSIDIAN_ROD = itemId++;
+        private static readonly long DARKGLASS_SPEAR = itemId++;
+        private static readonly long TIMESPACE_DAGGER = itemId++;
+        private static readonly long QUARTZ_SHIELD = itemId++;
+        private static readonly long POCKETWATCH = itemId++;
+        private static readonly long NOVA_CROWN = itemId++;
+        private static readonly long BLACKHOLE_CHARM = itemId++;
+        private static readonly long TWINSTAR_EARRINGS = itemId++;
+
+        private static readonly long KYOU_NO_OMIKUJI = itemId++;
+        private static readonly long YOUKAI_BRACELET = itemId++;
+        private static readonly long ONI_STAFF = itemId++;
+        private static readonly long KAPPA_SHIELD = itemId++;
+        private static readonly long USAGI_KAMEN = itemId++;
+        private static readonly long RED_TANZAKU = itemId++;
+        private static readonly long VEGA_SPEAR = itemId++;
+        private static readonly long ALTAI_DAGGER = itemId++;
+
+        private static readonly long GHOST_SPEAR = itemId++;
+        private static readonly long PHANTOM_DAGGER = itemId++;
+        private static readonly long CURSED_CANDLESTAFF = itemId++;
+        private static readonly long HAUNTED_GLOVES = itemId++;
+        private static readonly long OLD_BONNET = itemId++;
+        private static readonly long MAID_OUTFIT = itemId++;
+        private static readonly long CALLING_BELL = itemId++;
+        private static readonly long SMOKE_SHIELD = itemId++;
+
+        private static readonly long GRANDMASTER_SPEAR = itemId++;
+        private static readonly long TEACHER_KNIFE = itemId++;
+        private static readonly long TACTICIAN_ROD = itemId++;
+        private static readonly long SPIKED_SHIELD = itemId++;
+        private static readonly long BATTLEMAIDEN_ARMOR = itemId++;
+        private static readonly long GLADIATOR_HELMET = itemId++;
+        private static readonly long LANCER_GAUNTLETS = itemId++;
+        private static readonly long LION_CHARM = itemId++;
+
+        private static readonly long BLUEBOLT_STAFF = itemId++;
+        private static readonly long LAPIS_SWORD = itemId++;
+        private static readonly long SHOCKWAVE_TOME = itemId++;
+        private static readonly long BATTERY_SHIELD = itemId++;
+        private static readonly long RAIJU_CROWN = itemId++;
+        private static readonly long STATICSHOCK_EARRINGS = itemId++;
+        private static readonly long STORMDANCE_GOWN = itemId++;
+        private static readonly long BLACKBOLT_RIBBON = itemId++;
+
+        private static readonly long CRANE_KATANA = itemId++;
+        private static readonly long FALCONFEATHER_DAGGER = itemId++;
+        private static readonly long TORNADO_STAFF = itemId++;
+        private static readonly long CLOUD_GUARD = itemId++;
+        private static readonly long HERMES_BOW = itemId++;
+        private static readonly long TALON_CHARM = itemId++;
+        private static readonly long TINY_WINGS = itemId++;
+        private static readonly long FEATHERED_OVERCOAT = itemId++;
+
+        private static readonly long SANDPRIESTESS_SPEAR = itemId++;
+        private static readonly long FLAMEDANCER_DAGGER = itemId++;
+        private static readonly long WHITEFLAME_STAFF = itemId++;
+        private static readonly long SACRED_SHIELD = itemId++;
+        private static readonly long MARBLE_CLASP = itemId++;
+        private static readonly long SUN_PENDANT = itemId++;
+        private static readonly long TINY_HOURGLASS = itemId++;
+        private static readonly long DESERT_EARRINGS = itemId++;
+
+        private static readonly long GIANT_STONE_CLUB = itemId++;
+        private static readonly long RUINS_SWORD = itemId++;
+        private static readonly long MOUNTAIN_STAFF = itemId++;
+        private static readonly long BOULDER_SHIELD = itemId++;
+        private static readonly long GOLEMS_CLAYMORE = itemId++;
+        private static readonly long STONEPLATE_ARMOR = itemId++;
+        private static readonly long SACREDSTONE_CHARM = itemId++;
+        private static readonly long CLAY_RABBIT = itemId++;
+
+        private static readonly long WATERFALL_POLEARM = itemId++;
+        private static readonly long VORPAL_DAO = itemId++;
+        private static readonly long JADE_STAFF = itemId++;
+        private static readonly long REFLECTION_SHIELD = itemId++;
+        private static readonly long BUTTERFLY_HAIRPIN = itemId++;
+        private static readonly long WATERMAGE_PENDANT = itemId++;
+        private static readonly long RAINDROP_EARRINGS = itemId++;
+        private static readonly long AQUAMARINE_BRACELET = itemId++;
+
+        private static readonly long GLACIER_SPEAR = itemId++;
+        private static readonly long FROST_DAGGER = itemId++;
+        private static readonly long FROZEN_STAFF = itemId++;
+        private static readonly long COLDSTEEL_SHIELD = itemId++;
+        private static readonly long POLAR_COAT = itemId++;
+        private static readonly long ICICLE_EARRINGS = itemId++;
+        private static readonly long WINTER_HAT = itemId++;
+        private static readonly long SNOW_BOOTS = itemId++;
+
+        private static readonly long SPEAR_OF_REMORSE = itemId++;
+        private static readonly long MEMORY_GREATSWORD = itemId++;
+        private static readonly long STAFF_OF_SORROW = itemId++;
+        private static readonly long SHIELD_OF_SMILES = itemId++;
+        private static readonly long LONESOME_PENDANT = itemId++;
+        private static readonly long SPARK_OF_DETERMINATION = itemId++;
+        private static readonly long CROWN_OF_LOVE = itemId++;
+        private static readonly long COMFORTING_COAT = itemId++;
+
+        private static readonly long RIGHTHAND_CAST = itemId++;
+        private static readonly long LEFTHAND_CAST = itemId++;
+        private static readonly long HEXED_BLINDFOLD = itemId++;
+        private static readonly long ANGELS_HALO = itemId++;
+        private static readonly long UNSACRED_PENDANT = itemId++;
+        private static readonly long WHITEWING_BRACELET = itemId++;
+        private static readonly long DARKCRYSTAL_ROSE = itemId++;
+        private static readonly long DARK_WINGS = itemId++;
+
+        private static readonly long GIANT_PAINTBRUSH = itemId++;
+        private static readonly long SEWING_SWORD = itemId++;
+        private static readonly long SKETCHBOOK = itemId++;
+        private static readonly long PALETTE_SHIELD = itemId++;
+        private static readonly long HANDMADE_CHARM = itemId++;
+        private static readonly long PAINTERS_BERET = itemId++;
+        private static readonly long ARTIST_SMOCK = itemId++;
+        private static readonly long COLORFUL_EARRINGS = itemId++;
+
+        private static readonly long DAYLIGHT_SWORD = itemId++;
+        private static readonly long NIGHTGLEAM_SWORD = itemId++;
+        private static readonly long SPEAR_OF_WINDS = itemId++;
+        private static readonly long SPEAR_OF_RAINS = itemId++;
+        private static readonly long HEAVENS_CODEX = itemId++;
+        private static readonly long HELLS_CODEX = itemId++;
+        private static readonly long ROBE_OF_LIGHTS = itemId++;
+        private static readonly long ROBE_OF_DARK = itemId++;
+
+        private static readonly long HOOKED_STAFF = itemId++;
+        private static readonly long SPRINGLOADED_SCYTHE = itemId++;
+        private static readonly long HIDDEN_BLADE = itemId++;
+        private static readonly long SHARPEDGED_SHIELD = itemId++;
+        private static readonly long POINTED_RING = itemId++;
+        private static readonly long CROWN_OF_SWORDS = itemId++;
+        private static readonly long BLADED_CLOAD = itemId++;
+        private static readonly long GREATSWORD_PENDANT = itemId++;
+
+        private static readonly long RUSTED_GREATSWORD = itemId++;
+        private static readonly long SAND_SHOVEL = itemId++;
+        private static readonly long SALTWATER_STAFF = itemId++;
+        private static readonly long LARGE_UMBRELLA = itemId++;
+        private static readonly long ONEPIECE_SWIMSUIT = itemId++;
+        private static readonly long STRAW_HAT = itemId++;
+        private static readonly long LARGE_ANCHOR = itemId++;
+        private static readonly long BEACH_SANDALS = itemId++;
+
+        private static readonly long STRONGMANS_BARD = itemId++;
+        private static readonly long SPINNING_CHAKRAM = itemId++;
+        private static readonly long RIBBONED_STAFF = itemId++;
+        private static readonly long TRICK_SHIELD = itemId++;
+        private static readonly long ROSERED_LEOTARD = itemId++;
+        private static readonly long JESTERS_HAT = itemId++;
+        private static readonly long RAINBOW_CAPE = itemId++;
+        private static readonly long PERFORMERS_SHOES = itemId++;
+
+        private static readonly long IRON_PICKAXE = itemId++;
+        private static readonly long DYNAMITE_STAFF = itemId++;
+        private static readonly long FOSSIL_DAGGER = itemId++;
+        private static readonly long DRILL_SHIELD = itemId++;
+        private static readonly long CANARY_CHARM = itemId++;
+        private static readonly long PYRITE_EARRINGS = itemId++;
+        private static readonly long CAVERS_CLOAK = itemId++;
+        private static readonly long MINERS_HEADLAMP = itemId++;
+
+        private static readonly long TINY_FORK = itemId++;
+        private static readonly long STIRRING_SPOON = itemId++;
+        private static readonly long FANCIFUL_BOOK = itemId++;
+        private static readonly long APPLE_PLATE = itemId++;
+        private static readonly long VANILLA_WAFERS = itemId++;
+        private static readonly long CARAMEL_TEA = itemId++;
+        private static readonly long STRAWBERRY_CAKE = itemId++;
+        private static readonly long SWEET_TAFFY = itemId++;
+        #endregion
+
         #region Itemsets
-        private static readonly long[] ARCANE_SET = [287, 288, 289, 290, 291, 292, 293, 294];
+        private static readonly long[] ARCANE_SET = [RAVEN_GRIMOIRE, BLACKWING_STAFF, CURSE_TALON, DARKMAGIC_BLADE, WITCHS_CLOAK, CROWFEATHER_HAIRPIN, REDBLACK_RIBBON, OPAL_NECKLACE];
 
-        private static readonly long[] NIGHT_SET = [295, 296, 297, 298, 299, 300, 301, 302];
+        private static readonly long[] NIGHT_SET = [SLEEPING_GREATBOW, CRESCENTMOON_DAGGER, LULLABY_HARP, NIGHTSTAR_GRIMOIRE, MOON_PENDANT, PAJAMA_HAT, STUFFED_RABBIT, NIGHTINGALE_GOWN];
 
-        private static readonly long[] TIMESPACE_SET = [303, 304, 305, 306, 307, 308, 309, 310];
+        private static readonly long[] TIMESPACE_SET = [ETERNITY_FLUTE, TIMEWARP_WAND, CHROME_SHIELD, CLOCKWORK_TOME, METRONOME_BOOTS, TIMEMAGE_CAP, STARRY_CLOAK, GEMINI_NECKLACE];
 
-        private static readonly long[] WIND_SET = [311, 312, 313, 314, 315, 316, 317, 318];
+        private static readonly long[] WIND_SET = [HAWKFEATHER_FAN, WINDBITE_DAGGER, PIDGEON_BOW, SHINSOKU_KATANA, EAGLEWING_CHARM, SPARROW_FEATHER, WINGED_CAP, THIEFS_COAT];
 
-        private static readonly long[] BLOODWOLF_SET = [319, 320, 321, 322, 323, 324, 325, 326];
+        private static readonly long[] BLOODWOLF_SET = [VAMPRIC_DAGGER, BLOODY_BANDAGE, LEECH_STAFF, BLOODHOUND_GREATSWORD, REAPER_CLOAK, BLOODFLOWER_BROOCH, WOLF_HOOD, BLOOD_VIAL];
 
-        private static readonly long[] ASSASSIN_SET = [327, 328, 329, 330, 331, 332, 333, 334];
+        private static readonly long[] ASSASSIN_SET = [BLACK_WAKIZASHI, THROWING_DAGGER, ASSASSINS_KNIFE, NINJUTSU_SCROLL, SHADOW_BRACELET, NINJA_ROBE, KUNOICHI_HOOD, SHINOBI_TABI];
 
-        private static readonly long[] ROCKDRAGON_SET = [335, 336, 337, 338, 339, 340, 341, 342];
+        private static readonly long[] ROCKDRAGON_SET = [DRAGONHEAD_SPEAR, GRANITE_GREATSWORD, GREYSTEEL_SHIELD, STONEBREAKER_STAFF, TOUGH_GAUNTLET, ROCKDRAGON_MAIL, OBSIDIAN_HAIRPIN, IRON_GREAVES];
 
-        private static readonly long[] FLAME_SET = [343, 344, 345, 346, 347, 348, 349, 350];
+        private static readonly long[] FLAME_SET = [VOLCANO_SPEAR, REDDRAGON_BLADE, FLAME_BOW, METEOR_STAFF, PHOENIX_CHARM, FIRESCALE_CORSET, DEMON_HORNS, FLAMEWALKER_BOOTS];
 
-        private static readonly long[] GEM_SET = [351, 352, 353, 354, 355, 356, 357, 358];
+        private static readonly long[] GEM_SET = [DIAMOND_SHIELD, PERIDOT_RAPIER, GARNET_STAFF, SAPPHIRE_VIOLIN, EMERALD_CHESTPLATE, AMETHYST_BRACELET, TOPAZ_CHARM, RUBY_CIRCLET];
 
-        private static readonly long[] LIGHTNING_SET = [359, 360, 361, 362, 363, 364, 365, 366];
+        private static readonly long[] LIGHTNING_SET = [BRIGHTSTORM_SPEAR, BOLT_STAFF, LIGHTNING_BOW, DARKSTORM_KNIFE, DARKCLOUD_NECKLACE, CROWN_OF_STORMS, THUNDERCLAP_GLOVES, STORM_PETTICOAT];
 
-        private static readonly long[] SHRINE_SET = [367, 368, 369, 370, 371, 372, 373, 374];
+        private static readonly long[] SHRINE_SET = [HOLY_GREATSWORD, SACRED_BOW, PURIFICATION_ROD, ORNAMENTAL_BELL, SHRINEMAIDENS_KOSODE, REDWHITE_RIBBON, DIVINE_MIRROR, GOLDEN_CHIME];
 
-        private static readonly long[] LUCKY_SET = [375, 376, 377, 378, 379, 380, 381, 382];
+        private static readonly long[] LUCKY_SET = [BOOK_OF_CHEATS, GOLDEN_KATANA, GLITTERING_TRUMPET, ROYAL_STAFF, BALLROOM_GOWN, SILVER_COIN, QUEENS_CROWN, MIMICK_RABBITFOOT];
 
-        private static readonly long[] LIFE_SET = [383, 384, 385, 386, 387, 388, 389, 390];
+        private static readonly long[] LIFE_SET = [BUTTERFLY_OCARINA, FAIRY_SPEAR, MOSS_SHIELD, FLORAL_BOW, BLUE_ROSE, SUNFLOWER_CROWN, MIDSUMMER_DRESS, GRASSWOVEN_BRACELET];
 
-        private static readonly long[] POISON_SET = [391, 392, 393, 394, 395, 396, 397, 398];
+        private static readonly long[] POISON_SET = [SNAKEFANG_DAGGER, IVY_STAFF, DEATHCAP_TOME, SPIDERBITE_BOW, COMPOUND_GLOVES, POISONFROG_CHARM, VENOM_HOOD, CHEMISTS_COAT];
 
-        private static readonly long[] DEPTH_SET = [399, 400, 401, 402, 403, 404, 405, 406];
+        private static readonly long[] DEPTH_SET = [SEASHEEL_SHIELD, NECRONOMICON, TIDAL_GREATSWORD, OCCULT_DAGGER, MERMAID_SCALEMAIL, HYDROUS_BLOB, ABYSS_ARTIFACT, LOST_PENDANT];
 
-        private static readonly long[] DARKBITE_SET = [407, 408, 409, 410, 411, 412, 413, 414];
+        private static readonly long[] DARKBITE_SET = [SAWTOOTH_CLEAVER, RAVENS_DAGGER, KILLING_NOTE, BLACKSTEEL_BUCKLER, NIGHTGUARD_GLOVES, SNIPERS_EYEGLASSES, DARKMAGE_CHARM, FIRSTSTRIKE_BRACELET];
 
-        private static readonly long[] TIMEGEM_SET = [415, 416, 417, 418, 419, 420, 421, 422];
+        private static readonly long[] TIMEGEM_SET = [OBSIDIAN_ROD, DARKGLASS_SPEAR, TIMESPACE_DAGGER, QUARTZ_SHIELD, POCKETWATCH, NOVA_CROWN, BLACKHOLE_CHARM, TWINSTAR_EARRINGS];
 
-        private static readonly long[] YOUKAI_SET = [423, 424, 425, 426, 427, 428, 429, 430];
+        private static readonly long[] YOUKAI_SET = [KYOU_NO_OMIKUJI, YOUKAI_BRACELET, ONI_STAFF, KAPPA_SHIELD, USAGI_KAMEN, RED_TANZAKU, VEGA_SPEAR, ALTAI_DAGGER];
 
-        private static readonly long[] HAUNTED_SET = [431, 432, 433, 434, 435, 436, 437, 438];
+        private static readonly long[] HAUNTED_SET = [GHOST_SPEAR, PHANTOM_DAGGER, CURSED_CANDLESTAFF, HAUNTED_GLOVES, OLD_BONNET, MAID_OUTFIT, CALLING_BELL, SMOKE_SHIELD];
 
-        private static readonly long[] GLADIATOR_SET = [439, 440, 441, 442, 443, 444, 445, 446];
+        private static readonly long[] GLADIATOR_SET = [GRANDMASTER_SPEAR, TEACHER_KNIFE, TACTICIAN_ROD, SPIKED_SHIELD, BATTLEMAIDEN_ARMOR, GLADIATOR_HELMET, LANCER_GAUNTLETS, LION_CHARM];
 
-        private static readonly long[] SPARKBLADE_SET = [447, 448, 449, 450, 451, 452, 453, 454];
+        private static readonly long[] SPARKBLADE_SET = [BLUEBOLT_STAFF, LAPIS_SWORD, SHOCKWAVE_TOME, BATTERY_SHIELD, RAIJU_CROWN, STATICSHOCK_EARRINGS, STORMDANCE_GOWN, BLACKBOLT_RIBBON];
 
-        private static readonly long[] SWIFTFLIGHT_SET = [455, 456, 457, 458, 459, 460, 461,462];
+        private static readonly long[] SWIFTFLIGHT_SET = [CRANE_KATANA, FALCONFEATHER_DAGGER, TORNADO_STAFF, CLOUD_GUARD, HERMES_BOW, TALON_CHARM, TINY_WINGS, FEATHERED_OVERCOAT];
 
-        private static readonly long[] SACREDFLAME_SET = [463, 464, 465, 466, 467, 468, 469, 470];
+        private static readonly long[] SACREDFLAME_SET = [SANDPRIESTESS_SPEAR, FLAMEDANCER_DAGGER, WHITEFLAME_STAFF, SACRED_SHIELD, MARBLE_CLASP, SUN_PENDANT, TINY_HOURGLASS, DESERT_EARRINGS];
 
-        private static readonly long[] RUINS_SET = [471, 472, 473, 474, 475, 476, 477, 478];
+        private static readonly long[] RUINS_SET = [GIANT_STONE_CLUB, RUINS_SWORD, MOUNTAIN_STAFF, BOULDER_SHIELD, GOLEMS_CLAYMORE, STONEPLATE_ARMOR, SACREDSTONE_CHARM, CLAY_RABBIT];
 
-        private static readonly long[] LAKESHRINE_SET = [479, 480, 481, 482, 483, 484, 485, 486];
+        private static readonly long[] LAKESHRINE_SET = [WATERFALL_POLEARM, VORPAL_DAO, JADE_STAFF, REFLECTION_SHIELD, BUTTERFLY_HAIRPIN, WATERMAGE_PENDANT, RAINDROP_EARRINGS, AQUAMARINE_BRACELET];
+
+        private static readonly long[] GLACIER_SET = [GLACIER_SPEAR, FROST_DAGGER, FROZEN_STAFF, COLDSTEEL_SHIELD, POLAR_COAT, ICICLE_EARRINGS, WINTER_HAT, SNOW_BOOTS];
+
+        private static readonly long[] MEMORY_SET = [SPEAR_OF_REMORSE, MEMORY_GREATSWORD, STAFF_OF_SORROW, SHIELD_OF_SMILES, LONESOME_PENDANT, SPARK_OF_DETERMINATION, CROWN_OF_LOVE, COMFORTING_COAT];
+
+        private static readonly long[] CULTIST_SET = [RIGHTHAND_CAST, LEFTHAND_CAST, HEXED_BLINDFOLD, ANGELS_HALO, UNSACRED_PENDANT, WHITEWING_BRACELET, DARKCRYSTAL_ROSE, DARK_WINGS];
+
+        private static readonly long[] PAINTERS_SET = [GIANT_PAINTBRUSH, SEWING_SWORD, SKETCHBOOK, PALETTE_SHIELD, HANDMADE_CHARM, PAINTERS_BERET, ARTIST_SMOCK, COLORFUL_EARRINGS];
+
+        private static readonly long[] DAYNIGHT_SET = [DAYLIGHT_SWORD, NIGHTGLEAM_SWORD, SPEAR_OF_WINDS, SPEAR_OF_RAINS, HEAVENS_CODEX, HELLS_CODEX, ROBE_OF_LIGHTS, ROBE_OF_DARK];
+
+        private static readonly long[] SHARPEDGE_SET = [HOOKED_STAFF, SPRINGLOADED_SCYTHE, HIDDEN_BLADE, SHARPEDGED_SHIELD, POINTED_RING, CROWN_OF_SWORDS, BLADED_CLOAD, GREATSWORD_PENDANT];
+
+        private static readonly long[] OCEANS_SET = [RUSTED_GREATSWORD, SAND_SHOVEL, SALTWATER_STAFF, LARGE_UMBRELLA, ONEPIECE_SWIMSUIT, STRAW_HAT, LARGE_ANCHOR, BEACH_SANDALS];
+
+        private static readonly long[] PERFORMERS_SET = [STRONGMANS_BARD, SPINNING_CHAKRAM, RIBBONED_STAFF, TRICK_SHIELD, ROSERED_LEOTARD, JESTERS_HAT, RAINBOW_CAPE, PERFORMERS_SHOES];
+
+        private static readonly long[] MINERS_SET = [IRON_PICKAXE, DYNAMITE_STAFF, FOSSIL_DAGGER, DRILL_SHIELD, CANARY_CHARM, PYRITE_EARRINGS, CAVERS_CLOAK, MINERS_HEADLAMP];
+
+        private static readonly long[] TEAPARTY_SET = [TINY_FORK, STIRRING_SPOON, FANCIFUL_BOOK, APPLE_PLATE, VANILLA_WAFERS, CARAMEL_TEA, STRAWBERRY_CAKE, SWEET_TAFFY];
         #endregion
 
         internal int AvailableTreasurespheres;
@@ -339,29 +680,30 @@ namespace RnSArchipelago.Utils
                     if (KINGDOMS.Contains(itemName))
                     {
                         AvailableKingdoms = AvailableKingdoms | (KingdomFlags)Enum.Parse(typeof(KingdomFlags), itemName.Replace(" ", "_").Replace("'", ""));
-                        this.logger.PrintMessage(AvailableKingdoms.ToString(), System.Drawing.Color.DarkOrange);
+                        this.logger.PrintMessage("Kingdoms: " + AvailableKingdoms.ToString(), System.Drawing.Color.DarkOrange);
                         shouldUpdateKingdomRoute = true;
                     } 
                     else if (itemName == "Progressive Region")
                     {
                         ProgressiveRegions++;
-                        this.logger.PrintMessage(ProgressiveRegions + "", System.Drawing.Color.DarkOrange);
+                        this.logger.PrintMessage("Progressive Regions: " + ProgressiveRegions, System.Drawing.Color.DarkOrange);
                         shouldUpdateKingdomRoute = true;
                     } 
                     else if (CLASSES.Contains(itemName))
                     {
                         AvailableClasses = AvailableClasses | (ClassFlags)Enum.Parse(typeof(ClassFlags), itemName);
-                        this.logger.PrintMessage(AvailableClasses.ToString(), System.Drawing.Color.DarkOrange);
+                        this.logger.PrintMessage("Classes: " + AvailableClasses.ToString(), System.Drawing.Color.DarkOrange);
                     } 
                     else if (ITEMSETS.Contains(itemName))
                     {
                         AddItemsFromItemset(itemName);
-                        this.logger.PrintMessage(String.Join(", ", AvailableItems), System.Drawing.Color.DarkOrange);
+                        this.logger.PrintMessage("Items: " + String.Join(", ", AvailableItems), System.Drawing.Color.DarkOrange);
                     } 
                     else if (itemName == "Treasuresphere")
                     {
                         AddChest?.Invoke();
                         AvailableTreasurespheres++;
+                        this.logger.PrintMessage("Treasuresphers: " + AvailableTreasurespheres, System.Drawing.Color.DarkOrange);
                     } 
                     else if (UPGRADES.Contains(itemName))
                     {
@@ -399,32 +741,36 @@ namespace RnSArchipelago.Utils
                                 AvailableSpecialUpgrades = AvailableSpecialUpgrades | SpecialUpgradeFlags.SpecialOpalGem;
                                 AvailableDefensiveUpgrades = AvailableDefensiveUpgrades | DefensiveUpgradeFlags.DefensiveOpalGem;
                             }
+                            this.logger.PrintMessage("Primaries: " + AvailablePrimaryUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Secondaries: " + AvailableSecondaryUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Specials: " + AvailableSpecialUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Defensives: " + AvailableDefensiveUpgrades.ToString(), System.Drawing.Color.DarkOrange);
                         } else if (enumName.Contains("Primary"))
                         {
                             AvailablePrimaryUpgrades = AvailablePrimaryUpgrades | (PrimaryUpgradeFlags)Enum.Parse(typeof(PrimaryUpgradeFlags), enumName);
-                            this.logger.PrintMessage(AvailablePrimaryUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Primaries: " + AvailablePrimaryUpgrades.ToString(), System.Drawing.Color.DarkOrange);
                         } else if (enumName.Contains("Secondary"))
                         {
                             AvailableSecondaryUpgrades = AvailableSecondaryUpgrades | (SecondaryUpgradeFlags)Enum.Parse(typeof(SecondaryUpgradeFlags), enumName);
-                            this.logger.PrintMessage(AvailableSecondaryUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Secondaries: " + AvailableSecondaryUpgrades.ToString(), System.Drawing.Color.DarkOrange);
                         } else if (enumName.Contains("Special"))
                         {
                             AvailableSpecialUpgrades = AvailableSpecialUpgrades | (SpecialUpgradeFlags)Enum.Parse(typeof(SpecialUpgradeFlags), enumName);
-                            this.logger.PrintMessage(AvailableSpecialUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Specials: " + AvailableSpecialUpgrades.ToString(), System.Drawing.Color.DarkOrange);
                         } else if (enumName.Contains("Defensive"))
                         {
                             AvailableDefensiveUpgrades = AvailableDefensiveUpgrades | (DefensiveUpgradeFlags)Enum.Parse(typeof(DefensiveUpgradeFlags), enumName);
-                            this.logger.PrintMessage(AvailableDefensiveUpgrades.ToString(), System.Drawing.Color.DarkOrange);
+                            this.logger.PrintMessage("Defensives: " + AvailableDefensiveUpgrades.ToString(), System.Drawing.Color.DarkOrange);
                         }
                     } 
                     else if (POTIONS.Contains(itemName))
                     {
                         AvailablePotions.Add(itemName);
-                        this.logger.PrintMessage(String.Join(", ", AvailablePotions), System.Drawing.Color.DarkOrange);
+                        this.logger.PrintMessage("Potions: " + String.Join(", ", AvailablePotions), System.Drawing.Color.DarkOrange);
                     } else if (itemName.Contains("Victory"))
                     {
                         victories.Add(itemName);
-                        this.logger.PrintMessage(String.Join(", ", victories), System.Drawing.Color.DarkOrange);
+                        this.logger.PrintMessage("Victories: " + String.Join(", ", victories), System.Drawing.Color.DarkOrange);
                         if (CheckGoal())
                         {
                             SendGoal?.Invoke();

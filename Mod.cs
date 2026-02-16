@@ -142,46 +142,18 @@ namespace RnSArchipelago
                 //TODO: Defender special does not work - needs another defender ability to charge, doesn't handle stored charges correct
                 //TODO: Similarly, any defender ability adds a counter to you special that does nothing
                 //TODO: Ancient abilities does not work as there is no friend
-                availablePrimary.Add(6);
-                availableSecondary.Add(13);
-                availableSpecial.Add(20);
-                availableDefensive.Add(27);
-                availablePrimary.Add(34);
-                availableSecondary.Add(41);
-                availableSpecial.Add(48);
-                availableDefensive.Add(55);
-                availablePrimary.Add(62);
-                availableSecondary.Add(69);
-                availableSpecial.Add(76);
-                availableDefensive.Add(83);
-                availablePrimary.Add(90);
-                availableSecondary.Add(97);
-                availableSpecial.Add(104);
-                availableDefensive.Add(111);
-                availablePrimary.Add(118);
-                availableSecondary.Add(125);
-                availableSpecial.Add(132);
-                availableDefensive.Add(139);
-                availablePrimary.Add(146);
-                availableSecondary.Add(153);
-                availableSpecial.Add(160);
-                availableDefensive.Add(167);
-                availablePrimary.Add(174);
-                availableSecondary.Add(181);
-                availableSpecial.Add(188);
-                availableDefensive.Add(195);
-                availablePrimary.Add(202);
-                availableSecondary.Add(209);
-                availableSpecial.Add(216);
-                availableDefensive.Add(223);
-                availablePrimary.Add(230);
-                availableSecondary.Add(237);
-                availableSpecial.Add(244);
-                availableDefensive.Add(251);
-                availablePrimary.Add(258);
-                availableSecondary.Add(265);
-                availableSpecial.Add(272);
-                availableDefensive.Add(279);
+                var primaryId = -22;
+                var secondaryId = -15;
+                var specialId = -8;
+                var defensiveId = -1;
+                while (primaryId < 370)
+                {
+                    availablePrimary.Add(primaryId+=28);
+                    availableSecondary.Add(secondaryId+=28);
+                    availableSpecial.Add(specialId+=28);
+                    availableDefensive.Add(defensiveId+=28);
+                }
+                logger.PrintMessage(String.Join(", ", availableDefensive), System.Drawing.Color.Red);
 
 
             }
@@ -821,6 +793,26 @@ namespace RnSArchipelago
         private bool isAncient(int abilityId)
         {
             return abilityId == 258 || abilityId == 265 || abilityId == 272 || abilityId == 279;
+        }
+
+        private bool isHammermaid(int abilityId)
+        {
+            return abilityId == 286 || abilityId == 293 || abilityId == 300 || abilityId == 307;
+        }
+
+        private bool isPyromancer(int abilityId)
+        {
+            return abilityId == 314 || abilityId == 321 || abilityId == 328 || abilityId == 335;
+        }
+
+        private bool isGrenadier(int abilityId)
+        {
+            return abilityId == 342 || abilityId == 349 || abilityId == 356 || abilityId == 363;
+        }
+
+        private bool isShadow(int abilityId)
+        {
+            return abilityId == 370 || abilityId == 377 || abilityId == 384 || abilityId == 391;
         }
 
         // Helper function to check if the weakreference are ready and get the strong reference
