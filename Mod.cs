@@ -153,8 +153,6 @@ namespace RnSArchipelago
                     availableSpecial.Add(specialId+=28);
                     availableDefensive.Add(defensiveId+=28);
                 }
-                logger.PrintMessage(String.Join(", ", availableDefensive), System.Drawing.Color.Red);
-
 
             }
         }

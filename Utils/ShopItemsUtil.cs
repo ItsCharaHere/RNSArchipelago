@@ -173,19 +173,19 @@ namespace RnSArchipelago.Utils
 
                 if (randomPrimary == InventoryUtil.PrimaryUpgradeFlags.PrimaryEmeraldGem)
                 {
-                    *argv[0] = new RValue(520);
+                    *argv[0] = new RValue(713);
                 } else if (randomPrimary == InventoryUtil.PrimaryUpgradeFlags.PrimaryGarnetGem)
                 {
-                    *argv[0] = new RValue(516);
+                    *argv[0] = new RValue(709);
                 } else if (randomPrimary == InventoryUtil.PrimaryUpgradeFlags.PrimaryRubyGem)
                 {
-                    *argv[0] = new RValue(512);
+                    *argv[0] = new RValue(705);
                 } else if (randomPrimary == InventoryUtil.PrimaryUpgradeFlags.PrimarySapphireGem)
                 {
-                    *argv[0] = new RValue(508);
+                    *argv[0] = new RValue(701);
                 } else if (randomPrimary == InventoryUtil.PrimaryUpgradeFlags.PrimaryOpalGem)
                 {
-                    *argv[0] = new RValue(504);
+                    *argv[0] = new RValue(697);
                 }
             }
             
@@ -216,23 +216,23 @@ namespace RnSArchipelago.Utils
 
                 if (randomSecondary == InventoryUtil.SecondaryUpgradeFlags.SecondaryEmeraldGem)
                 {
-                    *argv[0] = new RValue(521);
+                    *argv[0] = new RValue(714);
                 }
                 else if (randomSecondary == InventoryUtil.SecondaryUpgradeFlags.SecondaryGarnetGem)
                 {
-                    *argv[0] = new RValue(517);
+                    *argv[0] = new RValue(710);
                 }
                 else if (randomSecondary == InventoryUtil.SecondaryUpgradeFlags.SecondaryRubyGem)
                 {
-                    *argv[0] = new RValue(513);
+                    *argv[0] = new RValue(706);
                 }
                 else if (randomSecondary == InventoryUtil.SecondaryUpgradeFlags.SecondarySapphireGem)
                 {
-                    *argv[0] = new RValue(509);
+                    *argv[0] = new RValue(702);
                 }
                 else if (randomSecondary == InventoryUtil.SecondaryUpgradeFlags.SecondaryOpalGem)
                 {
-                    *argv[0] = new RValue(505);
+                    *argv[0] = new RValue(698);
                 }
             }
 
@@ -263,23 +263,23 @@ namespace RnSArchipelago.Utils
 
                 if (randomSpecial == InventoryUtil.SpecialUpgradeFlags.SpecialEmeraldGem)
                 {
-                    *argv[0] = new RValue(522);
+                    *argv[0] = new RValue(715);
                 }
                 else if (randomSpecial == InventoryUtil.SpecialUpgradeFlags.SpecialGarnetGem)
                 {
-                    *argv[0] = new RValue(518);
+                    *argv[0] = new RValue(711);
                 }
                 else if (randomSpecial == InventoryUtil.SpecialUpgradeFlags.SpecialRubyGem)
                 {
-                    *argv[0] = new RValue(514);
+                    *argv[0] = new RValue(707);
                 }
                 else if (randomSpecial == InventoryUtil.SpecialUpgradeFlags.SpecialSapphireGem)
                 {
-                    *argv[0] = new RValue(510);
+                    *argv[0] = new RValue(703);
                 }
                 else if (randomSpecial == InventoryUtil.SpecialUpgradeFlags.SpecialOpalGem)
                 {
-                    *argv[0] = new RValue(506);
+                    *argv[0] = new RValue(699);
                 }
             }
 
@@ -310,23 +310,23 @@ namespace RnSArchipelago.Utils
 
                 if (randomDefensive == InventoryUtil.DefensiveUpgradeFlags.DefensiveEmeraldGem)
                 {
-                    *argv[0] = new RValue(523);
+                    *argv[0] = new RValue(716);
                 }
                 else if (randomDefensive == InventoryUtil.DefensiveUpgradeFlags.DefensiveGarnetGem)
                 {
-                    *argv[0] = new RValue(519);
+                    *argv[0] = new RValue(712);
                 }
                 else if (randomDefensive == InventoryUtil.DefensiveUpgradeFlags.DefensiveRubyGem)
                 {
-                    *argv[0] = new RValue(515);
+                    *argv[0] = new RValue(708);
                 }
                 else if (randomDefensive == InventoryUtil.DefensiveUpgradeFlags.DefensiveSapphireGem)
                 {
-                    *argv[0] = new RValue(511);
+                    *argv[0] = new RValue(704);
                 }
                 else if (randomDefensive == InventoryUtil.DefensiveUpgradeFlags.DefensiveOpalGem)
                 {
-                    *argv[0] = new RValue(507);
+                    *argv[0] = new RValue(700);
                 }
             }
 
