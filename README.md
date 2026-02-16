@@ -25,7 +25,8 @@ You can install the mod thorugh Reloaded by adding Rabbit and Steel as an applic
 
 Alternatively, it can be downloaded manually by 
 1. Downloading the .7z file in releases
-2. Dragging it (while still zipped) onto the Reloaded 2 "Configure Mods" screen, which is reached by clicking on the Rabbit and Steel Icon
+2. Remove the version number from the name so that its RnSArchipelago.7z
+3. Dragging it (while still zipped) onto the Reloaded 2 "Configure Mods" screen, which is reached by clicking on the Rabbit and Steel Icon
 
 Then on the "Configure Mods" screen make sure the mod is active, box should be red and have a + instead of -
 - RNSReloaded should have a filled in red box
