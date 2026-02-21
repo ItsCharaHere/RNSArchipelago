@@ -148,7 +148,7 @@ namespace RnSArchipelago.Connection
                     rnsReloaded.ExecuteScript("scr_chat_add_message", null, null, [new RValue(-1), new(), new(0), message, new(0)]);
 
                     // Return to lobby in a safe thread if there was a connection error
-                    if (errorMessage.StartsWith("Connection refused: "))
+                    if (errorMessage.StartsWith("Connection refused: ") || errorMessage.StartsWith("Could not connect to the multiworld"))
                     {
                         rnsReloaded.ExecuteScript("scr_runmenu_disband_disband", null, null, []);
                     }

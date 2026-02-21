@@ -284,7 +284,7 @@ namespace RnSArchipelago
             conn.resetConnEndHook.Enable();
 
             // Set up in game message queue checking
-            var drawId = rnsReloaded.ScriptFindId("gameframe_draw");
+            var drawId = rnsReloaded.ScriptFindId("scr_input_check");
             var drawScript = rnsReloaded.GetScriptData(drawId - 100000);
             this.conn.messageHandler.addMessageHook = hooks.CreateHook<ScriptDelegate>(this.conn.messageHandler.AddMessage, drawScript->Functions->Function);
             this.conn.messageHandler.addMessageHook.Activate();
@@ -597,6 +597,11 @@ namespace RnSArchipelago
             locationHandler.readyCheckHook = hooks.CreateHook<ScriptDelegate>(locationHandler.StopReadyCheck, readyCheckScript->Functions->Function);
             locationHandler.readyCheckHook.Activate();
             locationHandler.readyCheckHook.Enable();
+
+            var spawnTreasuresphereScript = rnsReloaded.GetScriptData(rnsReloaded.ScriptFindId("scr_input_check_p") - 100000);
+            locationHandler.spawnTreasuresphereHook = hooks.CreateHook<ScriptDelegate>(locationHandler.SpawnTreasuresphere, spawnTreasuresphereScript->Functions->Function);
+            locationHandler.spawnTreasuresphereHook.Activate();
+            locationHandler.spawnTreasuresphereHook.Enable();
         }
 
         // TODO: REMOVE Testing function to oneshot

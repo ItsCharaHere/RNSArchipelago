@@ -602,17 +602,16 @@ namespace RnSArchipelago
                     {
                         rnsReloaded.CreateString(&boxTitle, "connected to archipelago");
 
-                        *instance.Get("spr") = new(121);
+                        *instance.Get("spr") = new(28);
                         *instance.Get("spriteOffsetX") = new(-400);
                     }
                     else
                     {
                         rnsReloaded.CreateString(&boxTitle, "disconencted - click to reconnect");
 
-                        *instance.Get("spr") = new(67);
+                        *instance.Get("spr") = new(284);
                         *instance.Get("subimg") = new(10);
                         *instance.Get("spriteOffsetX") = new(-525);
-                        *instance.Get("spriteSc") = new(0.5);
                     }
                     *instance.Get("name") = boxTitle;
 
@@ -644,10 +643,8 @@ namespace RnSArchipelago
             if (rnsReloadedRef.TryGetTarget(out var rnsReloaded))
             {
                 this.logger.PrintMessage("Attempting to Reconnect", System.Drawing.Color.Red);
-                conn.StartConnection().ContinueWith(tsk =>
-                {
-                    rnsReloaded.ExecuteScript("scr_runmenu_lobbysettings_return", null, null, []);
-                });
+                conn.StartConnection().Wait();
+                rnsReloaded.ExecuteScript("scr_runmenu_lobbysettings_return", null, null, []);
 
                 return returnValue;
             }

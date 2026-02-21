@@ -1,14 +1,11 @@
-﻿using Archipelago.MultiClient.Net;
-using Archipelago.MultiClient.Net.Enums;
+﻿using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Models;
 using Archipelago.MultiClient.Net.Packets;
 using Reloaded.Hooks.Definitions;
-using Reloaded.Mod.Interfaces.Internal;
 using RnSArchipelago.Connection;
 using RnSArchipelago.Utils;
 using RNSReloaded.Interfaces;
 using RNSReloaded.Interfaces.Structs;
-using System.Diagnostics.CodeAnalysis;
 using Reloaded.Mod.Interfaces;
 
 namespace RnSArchipelago.Game
@@ -37,6 +34,7 @@ namespace RnSArchipelago.Game
         internal IHook<ScriptDelegate>? itemSetDescriptionHook;
         //internal IHook<ScriptDelegate>? itemSetUpgradeDescriptionHook;
         internal IHook<ScriptDelegate>? takeItemHook;
+        internal IHook<ScriptDelegate>? spawnTreasuresphereHook;
         internal IHook<ScriptDelegate>? spawnTreasuresphereOnStartNHook;
         internal IHook<ScriptDelegate>? readyCheckHook;
 
@@ -50,6 +48,8 @@ namespace RnSArchipelago.Game
 
         private Task<Dictionary<long, ScoutedItemInfo>> chestContents = null!;
         private Task<Dictionary<long, ScoutedItemInfo>> shopContents = null!;
+
+        private int treasurespheresToSpawn = 0;
 
         internal LocationHandler(WeakReference<IRNSReloaded> rnsReloadedRef, Random rand, ILogger logger, HookUtil hookUtil, InventoryUtil inventoryUtil, ShopItemsUtil shopItemsUtil, Config.Config modConfig, ArchipelagoConnection conn)
         {
@@ -1111,25 +1111,52 @@ namespace RnSArchipelago.Game
         // Make the next notch be an ingame only chest
         private void AddChestToNotch()
         {
-            if (this.rnsReloadedRef.TryGetTarget(out var rnsReloaded))
+            treasurespheresToSpawn++;
+        }
+
+        // On outskirts loading, besides loading into lobby, add the treasurespheres we have accumulated
+        internal RValue* SpawnTreasuresphere(CInstance* self, CInstance* other, RValue* returnValue, int argc, RValue** argv)
+        {
+            if (modConfig.ExtraDebugMessages)
             {
-                this.hookUtil.FindElementInLayer("RunMenu_Blocker", "xSubimg", out var element);
-                var instance = ((CLayerInstanceElement*)element)->Instance;
-
-                var currentPos = this.hookUtil.GetNumeric(rnsReloaded.FindValue(instance, "currentPos"));
-                if (currentPos == -1)
-                {
-                    currentPos = 0;
-                }
-                var notches = rnsReloaded.FindValue(instance, "notches");
-                var notch = this.hookUtil.CreateRArray([5, "", 0, 0]);
-
-                // Actually increase things
-                rnsReloaded.ExecuteCodeFunction("array_insert", instance, null, [*notches, new RValue(currentPos + 1), notch]);
-                rnsReloaded.FindValue(instance, "notchNumber")->Real = this.hookUtil.GetNumeric(rnsReloaded.FindValue(instance, "notchNumber")) + 1;
-                rnsReloaded.ExecuteCodeFunction("array_insert", instance, null, [*rnsReloaded.FindValue(instance, "xSubimg"), new RValue(currentPos + 1), new(5)]);
-                
+                this.logger.PrintMessage("Before Original Function Try Spawn Treasuresphere", System.Drawing.Color.DarkOrange);
             }
+            if (this.spawnTreasuresphereHook != null)
+            {
+                returnValue = this.spawnTreasuresphereHook.OriginalFunction(self, other, returnValue, argc, argv);
+            }
+            else
+            {
+                this.logger.PrintMessage("Unable to call spawn trasuresphere hook", System.Drawing.Color.Red);
+            }
+
+            if (treasurespheresToSpawn > 0)
+            {
+
+                if (this.rnsReloadedRef.TryGetTarget(out var rnsReloaded))
+                {
+                    this.hookUtil.FindElementInLayer("RunMenu_Blocker", "xSubimg", out var element);
+                    var instance = ((CLayerInstanceElement*)element)->Instance;
+
+                    var currentPos = this.hookUtil.GetNumeric(rnsReloaded.FindValue(instance, "currentPos"));
+                    if (currentPos == -1)
+                    {
+                        currentPos = 0;
+                    }
+                    var notches = rnsReloaded.FindValue(instance, "notches");
+                    var notch = this.hookUtil.CreateRArray([5, "", 0, 0]);
+
+                    // Actually increase things
+                    rnsReloaded.ExecuteCodeFunction("array_insert", instance, null, [*notches, new RValue(currentPos + 1), notch]);
+                    rnsReloaded.FindValue(instance, "notchNumber")->Real = this.hookUtil.GetNumeric(rnsReloaded.FindValue(instance, "notchNumber")) + 1;
+                    rnsReloaded.ExecuteCodeFunction("array_insert", instance, null, [*rnsReloaded.FindValue(instance, "xSubimg"), new RValue(currentPos + 1), new(5)]);
+
+                    treasurespheresToSpawn--;
+
+                }
+            }
+
+            return returnValue;
         }
 
         // On outskirts loading, besides loading into lobby, add the treasurespheres we have accumulated
@@ -1161,7 +1188,7 @@ namespace RnSArchipelago.Game
                 {
                     for (int i = 0; i < this.inventoryUtil.AvailableTreasurespheres; i++)
                     {
-                        AddChestToNotch();
+                        treasurespheresToSpawn++;
                     }
                 }
             }

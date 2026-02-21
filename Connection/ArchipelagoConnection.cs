@@ -93,20 +93,11 @@ namespace RnSArchipelago.Connection
                     
                     if (returnToTitle)
                     {
-                        this.messageHandler.errorMessage = "Disconnected from the multiworld";
-                        ReturnToTitle();
+                        this.messageHandler.errorMessage = "Could not connect to the multiworld";
                     }
 
                     return;
                 }
-            }
-        }
-
-        internal unsafe void ReturnToTitle()
-        {
-            if (rnsReloadedRef.TryGetTarget(out var rnsReloaded))
-            {
-                rnsReloaded.ExecuteScript("scr_runmenu_disband_disband", null, null, []);
             }
         }
 
