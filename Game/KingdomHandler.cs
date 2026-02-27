@@ -361,7 +361,7 @@ namespace RnSArchipelago.Game
                         var currentPos = this.hookUtil.GetNumeric(instance.Get("currentPos"));
                         var hallwayPos = this.hookUtil.GetNumeric(instance.Get("hallwayPos"));
                         var index = this.hookUtil.GetNumeric(instance.Get("currentPos"));
-                        if ((currentPos != 0 || hallwayPos != 0) && index != -1)
+                        if ((currentPos != 0 || hallwayPos != 0) && index != -1) // TODO: STILL SENDING ON SHIRA
                         {
                             locationHandler.SendNotchLoctaion(); // TODO: Will send a location even if we skip a chest. Unsure if I like that or not
                         }
@@ -457,61 +457,105 @@ namespace RnSArchipelago.Game
         }
 
         // Toggle the kingdom icons on the route selection screen to only display runnable kingdoms + the pale keep for a random one
-        private void ModifyRouteIcons(RValue* buttons)
+        private void ModifyRouteIcons(RValue* buttons, int buttonCount)
         {
-            // Always allow the random
-            *(buttons->Get(0)) = new(1);
-
-            var kingdoms = this.inventoryUtil.GetKingdomsAvailableAtNthOrder(CalculateMaxRun());
-
-            if (kingdoms.Contains("hw_nest"))
+            if (buttonCount >= 6)
             {
-                *(buttons->Get(1)) = new(1);
-            }
-            else
+                //TODO: CHANGE
+                // Always allow the random
+                *(buttons->Get(0)) = new(1);
+
+                var kingdoms = this.inventoryUtil.GetKingdomsAvailableAtNthOrder(CalculateMaxRun());
+
+                if (kingdoms.Contains("hw_nest"))
+                {
+                    *(buttons->Get(1)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(1)) = new(0);
+                }
+
+                if (kingdoms.Contains("hw_arsenal"))
+                {
+                    *(buttons->Get(2)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(2)) = new(0);
+                }
+
+                if (kingdoms.Contains("hw_lighthouse"))
+                {
+                    *(buttons->Get(3)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(3)) = new(0);
+                }
+
+                if (kingdoms.Contains("hw_streets"))
+                {
+                    *(buttons->Get(4)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(4)) = new(0);
+                }
+
+                if (kingdoms.Contains("hw_lakeside"))
+                {
+                    *(buttons->Get(5)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(5)) = new(0);
+                }
+
+                // Always disallow the extras
+                *(buttons->Get(6)) = new(0);
+                *(buttons->Get(7)) = new(0);
+            } else if (buttonCount == 4)
             {
+                //TODO: CHANGE
+                // Always allow the random
+                *(buttons->Get(0)) = new(0);
+
+                var kingdoms = this.inventoryUtil.GetKingdomsAvailableAtNthOrder(CalculateMaxRun());
+
+                if (kingdoms.Contains("hw_sanct"))
+                {
+                    *(buttons->Get(1)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(1)) = new(0);
+                }
+
+                if (kingdoms.Contains("hw_depths"))
+                {
+                    *(buttons->Get(2)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(2)) = new(0);
+                }
+
+                if (kingdoms.Contains("hw_aurum"))
+                {
+                    *(buttons->Get(3)) = new(1);
+                }
+                else
+                {
+                    *(buttons->Get(3)) = new(0);
+                }
+            } else if (buttonCount == 2)
+            {
+                //true random
+                *(buttons->Get(0)) = new(0);
+                //chaotic random
                 *(buttons->Get(1)) = new(0);
             }
-
-            if (kingdoms.Contains("hw_arsenal"))
-            {
-                *(buttons->Get(2)) = new(1);
-            }
-            else
-            {
-                *(buttons->Get(2)) = new(0);
-            }
-
-            if (kingdoms.Contains("hw_lighthouse"))
-            {
-                *(buttons->Get(3)) = new(1);
-            }
-            else
-            {
-                *(buttons->Get(3)) = new(0);
-            }
-
-            if (kingdoms.Contains("hw_streets"))
-            {
-                *(buttons->Get(4)) = new(1);
-            }
-            else
-            {
-                *(buttons->Get(4)) = new(0);
-            }
-
-            if (kingdoms.Contains("hw_lakeside"))
-            {
-                *(buttons->Get(5)) = new(1);
-            }
-            else
-            {
-                *(buttons->Get(5)) = new(0);
-            }
-
-            // Always disallow the extras
-            *(buttons->Get(6)) = new(0);
-            *(buttons->Get(7)) = new(0);
         }
 
         // If we are on the route selection screen, update it to match the available kingdoms
@@ -519,14 +563,26 @@ namespace RnSArchipelago.Game
         {
             if (this.rnsReloadedRef.TryGetTarget(out var rnsReloaded))
             {
+                if (modConfig.ExtraDebugMessages)
+                {
+                    this.logger.PrintMessage("Before Original Function Route Icons 1", System.Drawing.Color.DarkOrange);
+                }
+                if (this.fixChooseIconsHook != null)
+                {
+                    returnValue = this.fixChooseIconsHook.OriginalFunction(self, other, returnValue, argc, argv);
+                }
+                else
+                {
+                    this.logger.PrintMessage("Unable to call fix choose icons hook", System.Drawing.Color.Red);
+                }
                 if (this.inventoryUtil.isActive)
                 {
                     if (modConfig.ExtraDebugMessages)
                     {
                         this.logger.PrintMessage("Update Route Icons", System.Drawing.Color.DarkOrange);
                     }
-                    // Called continously on kingdoms 0-5, so just modify on the last one
-                    if (argc == 1 && this.hookUtil.IsEqualToNumeric(argv[0], 5))
+                    // Called continously on all icons, so just modify on the last one of the page
+                    if (argc == 1 && (this.hookUtil.IsEqualToNumeric(argv[0], 5) || this.hookUtil.IsEqualToNumeric(argv[0], 9) || this.hookUtil.IsEqualToNumeric(argv[0], 11)))
                     {
                         this.hookUtil.FindLayer("ItemExtra", out var layer);
                         if (layer != null)
@@ -538,10 +594,14 @@ namespace RnSArchipelago.Game
                                 var instanceValue = new RValue(instance->Instance);
 
                                 var routeIcons = instanceValue.Get("buttonAvailable");
-                                if (routeIcons != null && routeIcons->ToString() != "unset")
+                                var buttonCount = rnsReloaded.ArrayGetLength(routeIcons);
+                                var a = new RValue(self);
+                                this.logger.PrintMessage(a.ToString(), System.Drawing.Color.Red);
+                                
+                                if (routeIcons != null && routeIcons->ToString() != "unset" && buttonCount.HasValue)
                                 {
-                                    ModifyRouteIcons(routeIcons);
-                                    returnValue = routeIcons->Get(5);
+                                    ModifyRouteIcons(routeIcons, (int)hookUtil.GetNumeric(buttonCount.Value));
+                                    returnValue = routeIcons->Get((int)hookUtil.GetNumeric(buttonCount.Value)-1);
                                     if (modConfig.ExtraDebugMessages)
                                     {
                                         this.logger.PrintMessage("Before Return Update Route Icons", System.Drawing.Color.DarkOrange);
@@ -553,20 +613,7 @@ namespace RnSArchipelago.Game
                         }
                     }
                 }
-                else
-                {
-                    if (modConfig.ExtraDebugMessages)
-                    {
-                        this.logger.PrintMessage("Before Original Function Route Icons 1", System.Drawing.Color.DarkOrange);
-                    }
-                    if (this.fixChooseIconsHook != null)
-                    {
-                        returnValue = this.fixChooseIconsHook.OriginalFunction(self, other, returnValue, argc, argv);
-                    } else
-                    {
-                        this.logger.PrintMessage("Unable to call fix choose icons hook", System.Drawing.Color.Red);
-                    }
-                }
+                return returnValue;
             }
             else
             {
